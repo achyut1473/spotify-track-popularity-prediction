@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spotify Popularity Predictor</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #1db954, #121212);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #181818;
+            width: 400px;
+            margin: 40px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+        }
+
+        h1 {
+            color: #1db954;
+        }
+
+        p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #1db954;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #17a74a;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #1db954;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎧 Spotify Popularity Predictor</h1>
+
+    <p>Enter song characteristics to predict how popular it will be.</p>
+
+    <form action="/predict" method="post">
+
+    <label>Danceability (0–1)</label>
+    <input type="number" step="0.01" min="0" max="1" name="danceability" placeholder="e.g. 0.75" required>
+
+    <label>Energy (0–1)</label>
+    <input type="number" step="0.01" min="0" max="1" name="energy" placeholder="e.g. 0.80" required>
+
+    <label>Loudness (-60 to 0 dB)</label>
+    <input type="number" step="0.1" min="-60" max="0" name="loudness" placeholder="e.g. -5" required>
+
+    <label>Speechiness (0–1)</label>
+    <input type="number" step="0.01" min="0" max="1" name="speechiness" placeholder="e.g. 0.05" required>
+
+    <label>Acousticness (0–1)</label>
+    <input type="number" step="0.01" min="0" max="1" name="acousticness" placeholder="e.g. 0.20" required>
+
+    <label>Instrumentalness (0–1)</label>
+    <input type="number" step="0.01" min="0" max="1" name="instrumentalness" placeholder="e.g. 0.00" required>
+
+    <label>Liveness (0–1)</label>
+    <input type="number" step="0.01" min="0" max="1" name="liveness" placeholder="e.g. 0.10" required>
+
+    <label>Valence (0–1)</label>
+    <input type="number" step="0.01" min="0" max="1" name="valence" placeholder="e.g. 0.60" required>
+
+    <label>Tempo (50–200 BPM)</label>
+    <input type="number" step="1" min="50" max="200" name="tempo" placeholder="e.g. 120" required>
+
+    <br>
+    <button type="submit">Predict Popularity</button>
+
+    </form>
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+
+</div>
+
+</body>
+</html>
